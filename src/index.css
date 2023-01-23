@@ -9,7 +9,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: hsl(0, 1%, 17%);
+  background-color: hsl(0, 26%, 4%);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -17,6 +17,54 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+/*  * Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  padding: 0 1rem;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #1e1e1e;
+  box-shadow: 3px 3px 10px 0.1rem rgba(0, 0, 0, 0.504);
+}
+
+/*  * Sidebar */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  height: 100vh;
+  width: 250px;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #1e1e1e;
+  box-shadow: 3px 3px 10px 0.1rem rgba(0, 0, 0, 0.504);
+
+  transform: translateX(-100%);
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+/*  * Global */
+
 
 /*  * Tiles */
 
@@ -28,10 +76,10 @@
   width: 100%;
   height: 100%;
   padding: 1rem;
-  border: 1px solid rgba(255, 0, 0, 0.3);
+  border: 2px solid rgba(255, 0, 0, 0.3);
   border-radius: 0.5rem;
   background-color: #1e1e1e;
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.504);
+  box-shadow: 3px 3px 10px 0.1rem rgba(0, 0, 0, 0.504);
   transition: all 0.2s ease-in-out;
 }
 
