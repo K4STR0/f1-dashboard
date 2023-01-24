@@ -75,16 +75,18 @@ export const Home = () => {
           <ListTile
             title="DRIVERS STANDINGS"
             subtitle="2022"
-            labels={['Driver', 'Points']}
+            labels={['DRIVER', 'POINTS']}
             content={driverStandings}
             onClick={() => navigate('/standings/drivers')}
+            rank={true}
           />
           <ListTile
             title="CONSTRUCTORS STANDINGS"
             subtitle="2022"
-            labels={['Constructor', 'Points']}
+            labels={['CONSTRUCTOR', 'POINTS']}
             content={constructorStandings}
             onClick={() => navigate('/standings/constructors')}
+            rank={true}
           />
         </ListPanel>
         <GraphPanel>

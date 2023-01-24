@@ -1,4 +1,11 @@
-export const ListTile = ({ title, subtitle, labels, content, onClick }) => {
+export const ListTile = ({
+  title,
+  subtitle,
+  labels,
+  content,
+  onClick,
+  rank,
+}) => {
   return (
     <div className="tile" onClick={onClick}>
       <div className="text-sm font-semibold">{title}</div>
@@ -7,7 +14,7 @@ export const ListTile = ({ title, subtitle, labels, content, onClick }) => {
       <div className={`m-3 w-9/12`}>
         {/* Labels */}
         <div
-          className={`grid grid-cols-${labels.length} font-bold text-xs md:text-base my-2 text-center`}
+          className={`grid grid-cols-${labels.length} text-xs md:text-base my-2 text-center opacity-80`}
         >
           {labels.map((item, i) => (
             <div key={i} className={i === 0 ? 'text-left' : 'text-center'}>
@@ -20,7 +27,12 @@ export const ListTile = ({ title, subtitle, labels, content, onClick }) => {
         {content.map((item, x) => (
           <div
             key={x}
-            className={`grid grid-cols-${labels.length} text-xs md:text-base`}
+            className={
+              `grid grid-cols-${labels.length} text-xs md:text-base p-1 rounded mb-1 ` +
+              (rank & (x === 0) ? 'gold ' : '') +
+              (rank & (x === 1) ? 'silver ' : '') +
+              (rank & (x === 2) ? 'bronze ' : '')
+            }
           >
             {item.map((value, i) => (
               <div key={i} className={i === 0 ? 'text-left' : 'text-center'}>

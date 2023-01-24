@@ -147,9 +147,9 @@ export const Standings = () => {
             gap: '5px',
           }}
         >
-          <div className="grid grid-cols-4 text-xs md:text-base gap-5 opacity-90">
+          <div className="grid grid-cols-4 text-xs md:text-base opacity-70">
             {labels.map((item, i) => (
-              <div className='ml-3'>{item}</div>
+              <div className='mx-5'>{item}</div>
             ))}
           </div>
           {loading ? (
@@ -160,7 +160,7 @@ export const Standings = () => {
                 key={x}
                 className={
                   'grid grid-cols-4 text-xs md:text-base border ' +
-                  'border-red-900 rounded p-2 gap-5 bg-red-900 bg-opacity-20 ' +
+                  'border-red-900 rounded p-2 bg-red-900 bg-opacity-20 ' +
                   (x === 0 ? 'gold' : '') +
                   (x === 1 ? 'silver' : '') +
                   (x === 2 ? 'bronze' : '')
@@ -170,12 +170,13 @@ export const Standings = () => {
                   <div
                     key={i}
                     className={
-                      i === 0
-                        ? 'text-left font-semibold'
+                      'md:px-3 lg:px-10 ' + 
+                      (i === 0
+                        ? 'text-left font-semibold ' 
                         : 'text-center ' +
                           ((x === 0) | (x === 1) | (x === 2)
                             ? 'border-l border-l-black'
-                            : 'border-l border-l-red-900')
+                            : 'border-l border-l-red-900'))
                     }
                   >
                     {value}
