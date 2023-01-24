@@ -23,10 +23,16 @@ export const Sidebar = ({ closeSidebar, open }) => {
         src="/icons/close-icon.png"
         className="w-4 h-4 cursor-pointer mt-3 "
       />
-      <div>HI</div>
-      <div>IM</div>
-      <div>A</div>
-      <div>SIDEBAR</div>
+      <hr className='border-white w-full'/>
+      <div>MORE</div>
+      <div>FEATURES</div>
+      <div>COMING</div>
+      <div>SOON</div>
+      <hr className='border-white w-full'/>
+      <div>SE</div>
+      <div>VIENEN</div>
+      <div>COSITAS</div>
+      <hr className='border-white w-full'/>
     </div>
   )
 }

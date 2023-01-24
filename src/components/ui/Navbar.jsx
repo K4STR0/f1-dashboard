@@ -11,11 +11,19 @@ export const Navbar = ({ openSidebar }) => {
         className="absolute w-5 h-5 cursor-pointer"
       />
       <div className="flex m-auto gap-5 md:gap-20">
-        <div>RECORDS</div>
+        <div
+          className="cursor-pointer"
+          onClick={() => navigate('/standings/drivers')}
+        >
+          STANDINGS
+        </div>
         <div className="cursor-pointer" onClick={() => navigate('/')}>
           HOME
         </div>
-        <div className="cursor-pointer" onClick={() => navigate('/progress')}>
+        <div
+          className="cursor-pointer"
+          onClick={() => navigate('/progress/drivers')}
+        >
           PROGRESS
         </div>
       </div>

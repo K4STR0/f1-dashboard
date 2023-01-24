@@ -1,6 +1,6 @@
-export const ListTile = ({ title, subtitle, labels, content }) => {
+export const ListTile = ({ title, subtitle, labels, content, onClick }) => {
   return (
-    <div className="tile">
+    <div className="tile" onClick={onClick}>
       <div className="text-sm font-semibold">{title}</div>
       <div className="text-xs">{subtitle}</div>
 

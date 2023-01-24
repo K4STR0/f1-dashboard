@@ -102,9 +102,9 @@ export const getProgress = async ({ top = 10, year = 'current' }) => {
 
   driverDatasets = Object.keys(driverDatasets).map((key) => {
     // Generate random colors for each driver
-    const r = Math.floor(Math.random() * 255)
-    const g = Math.floor(Math.random() * 255)
-    const b = Math.floor(Math.random() * 255)
+    const r = Math.floor(Math.random() * 200) + 55
+    const g = Math.floor(Math.random() * 200) + 55
+    const b = Math.floor(Math.random() * 200) + 55
 
     return {
       label: key,
@@ -117,9 +117,9 @@ export const getProgress = async ({ top = 10, year = 'current' }) => {
 
   constructorDatasets = Object.keys(constructorDatasets).map((key) => {
     // Generate random colors for each constructor
-    const r = Math.floor(Math.random() * 255)
-    const g = Math.floor(Math.random() * 255)
-    const b = Math.floor(Math.random() * 255)
+    const r = Math.floor(Math.random() * 200) + 55
+    const g = Math.floor(Math.random() * 200) + 55
+    const b = Math.floor(Math.random() * 200) + 55
 
     return {
       label: key,

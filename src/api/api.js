@@ -24,20 +24,30 @@ export const getLastChampionship = async () => {
   }
 }
 
-export const getConstructorStandings = async () => {
-  const res = await axios.get(BASE_URL + 'current/constructorStandings.json')
+export const getConstructorStandings = async (year = 'current') => {
+  const res = await axios.get(BASE_URL + `${year}/constructorStandings.json`)
   const data =
     res.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings
   return data.map((item) => {
-    return [item.Constructor.name, item.points]
+    return [
+      item.Constructor.name,
+      item.Constructor.nationality,
+      item.wins,
+      item.points,
+    ]
   })
 }
 
-export const getDriverStandings = async () => {
-  const res = await axios.get(BASE_URL + 'current/driverStandings.json')
+export const getDriverStandings = async (year = 'current') => {
+  const res = await axios.get(BASE_URL + `${year}/driverStandings.json`)
   const data = res.data.MRData.StandingsTable.StandingsLists[0].DriverStandings
   return data.map((item) => {
-    return [item.Driver.givenName + ' ' + item.Driver.familyName, item.points]
+    return [
+      item.Driver.givenName + ' ' + item.Driver.familyName,
+      item.Driver.nationality,
+      item.wins,
+      item.points,
+    ]
   })
 }
 

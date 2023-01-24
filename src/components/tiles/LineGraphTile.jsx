@@ -20,9 +20,10 @@ ChartJS.register(
   Tooltip,
   Legend
 )
-export const LineGraphTile = ({ data, title, subtitle }) => {
+
+export const LineGraphTile = ({ data, title, subtitle, onClick }) => {
   return (
-    <div className="tile">
+    <div className="tile" onClick={onClick}>
       <div className="text-sm font-semibold">{title}</div>
       <div className="text-xs">{subtitle}</div>
       <div style={{ height: '400px', width: '100%' }}>

@@ -9,13 +9,30 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: hsl(0, 26%, 4%);
-
+  background-color: hsla(0, 24%, 4%, 0);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: linear-gradient(-45deg, #000000, #3108089b, #1d2021, #2e0a0a6e);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /*  * Navbar */
@@ -33,7 +50,13 @@
   padding: 0 1rem;
   color: rgba(255, 255, 255, 0.87);
   background-color: #1e1e1e;
+  opacity: 0.7;
   box-shadow: 3px 3px 10px 0.1rem rgba(0, 0, 0, 0.504);
+  transition: all 0.2s ease-in-out;
+}
+
+.navbar:hover {
+  opacity: 1;
 }
 
 /*  * Sidebar */
@@ -65,7 +88,6 @@
 
 /*  * Global */
 
-
 /*  * Tiles */
 
 .tile {
@@ -83,6 +105,67 @@
   transition: all 0.2s ease-in-out;
 }
 
+.tile.gold,
+.gold {
+  background: linear-gradient(
+    -45deg,
+    #ae8e4507,
+    #6d5e2f68,
+    #aa89340e,
+    #bc962e6e
+  );
+  background-size: 400% 400%;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  animation: color-gradient 10s ease infinite;
+}
+
+.tile.silver,
+.silver {
+  background: linear-gradient(
+    -45deg,
+    #c4c3c107,
+    #75747168,
+    #a5a5a50e,
+    #6767676e
+  );
+  background-size: 400% 400%;
+  border: 2px solid rgba(207, 207, 207, 0.3);
+  animation: color-gradient 10s ease infinite;
+}
+
+.tile.bronze,
+.bronze {
+  background: linear-gradient(
+    -45deg,
+    #cd7f3207,
+    #816a5568,
+    #bf6f233f,
+    #7564546e
+  );
+  background-size: 400% 400%;
+  border: 2px solid rgba(205, 128, 50, 0.407);
+  animation: color-gradient 10s ease infinite;
+}
+
 .tile:hover {
   transform: scale(1.05);
+}
+
+@keyframes color-gradient {
+  0% {
+    background-position: 0% 50%;
+    color: rgb(220, 196, 136);
+  }
+  50% {
+    background-position: 100% 50%;
+    color: rgb(255, 255, 255);
+  }
+  100% {
+    background-position: 0% 50%;
+    color: rgb(220, 196, 136);
+  }
+}
+
+.bronze {
+  color: rgb(205, 127, 50);
 }
