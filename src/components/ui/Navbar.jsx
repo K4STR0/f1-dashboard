@@ -24,7 +24,7 @@ export const Navbar = ({ openSidebar }) => {
           PROGRESS
         </div>
         <div className='flex justify-center cursor-pointer' onClick={() => navigate('/')}>
-          <img className='w-14 m-auto opacity-70' src='/icons/f1dashboard.svg' alt='' />
+          <img className='w-10 m-auto opacity-70' src='/icons/f1dashboard.svg' alt='' />
         </div>
         <div
           className='cursor-pointer max-md:hidden'
