@@ -27,6 +27,12 @@ export const Sidebar = ({ closeSidebar, open }) => {
       <hr className='border-white w-full' />
       <div
         className='cursor-pointer '
+        onClick={() => navigate('/')}
+      >
+        HOME
+      </div>
+      <div
+        className='cursor-pointer '
         onClick={() => navigate('/standings/drivers')}
       >
         STANDINGS
@@ -39,6 +45,9 @@ export const Sidebar = ({ closeSidebar, open }) => {
       </div>
       <div className='cursor-pointer' onClick={() => navigate('/records')}>
         RECORDS
+      </div>
+      <div className='cursor-pointer'>
+        OTHERS
       </div>
       <hr className='border-white w-full' />
     </div>
