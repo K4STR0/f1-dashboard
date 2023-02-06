@@ -10,7 +10,7 @@ export const Progress = () => {
   const navigate = useNavigate()
 
   const [year, setYear] = useState('current') //  1950, 2020, 'current'
-  const [top, setTop] = useState(null) //  1960, 2020, 'current'
+  const [top, setTop] = useState(null) //  5, 10, 'all'
   const [championship, setChampionship] = useState(champ) //  'drivers', 'constructors'
   const [data, setData] = useState({ labels: [], datasets: [] })
   const [loading, setLoading] = useState(true)
@@ -22,7 +22,7 @@ export const Progress = () => {
         datasets:
           championship === 'drivers'
             ? res.driverDatasets
-            : res.constructorDatasets,
+            : res.constructorDatasets
       })
       setLoading(false)
     })
@@ -35,7 +35,7 @@ export const Progress = () => {
       (x, i) => i + 1950
     )
       .reverse()
-      .map((year) => ({ value: year, label: year })),
+      .map((year) => ({ value: year, label: year }))
   ]
 
   const onYearChange = (event) => {
@@ -48,8 +48,8 @@ export const Progress = () => {
     { value: null, label: 'ALL' },
     ...Array.from({ length: 20 }, (x, i) => i + 1).map((top) => ({
       value: top,
-      label: 'TOP ' + top,
-    })),
+      label: 'TOP ' + top
+    }))
   ]
 
   const onTopChange = (event) => {
@@ -61,12 +61,12 @@ export const Progress = () => {
   const championshipOptions = [
     {
       label: 'DRIVERS',
-      value: 'drivers',
+      value: 'drivers'
     },
     {
       label: 'CONSTRUCTORS',
-      value: 'constructors',
-    },
+      value: 'constructors'
+    }
   ]
 
   const onChampChange = (event) => {
@@ -84,12 +84,12 @@ export const Progress = () => {
       textAlign: 'center',
       boxShadow: 'red',
       '&:hover': {
-        borderColor: 'rgba(255, 0, 0, 0.6)',
-      },
+        borderColor: 'rgba(255, 0, 0, 0.6)'
+      }
     }),
     menu: (provided) => ({
       ...provided,
-      backgroundColor: '#1e1e1e',
+      backgroundColor: '#1e1e1e'
     }),
     option: (provided, state) => ({
       ...provided,
@@ -97,13 +97,13 @@ export const Progress = () => {
       color: 'white',
       backgroundColor: '#1e1e1e',
       textAlign: 'center',
-      fontSize: state.selectProps.myFontSize,
+      fontSize: state.selectProps.myFontSize
     }),
     singleValue: (provided, state) => ({
       ...provided,
       color: state.data.color,
-      fontSize: state.selectProps.myFontSize,
-    }),
+      fontSize: state.selectProps.myFontSize
+    })
   }
 
   return (
@@ -113,20 +113,20 @@ export const Progress = () => {
           width: '90vw',
           height: '85vh',
           paddingTop: '100px',
-          margin: 'auto',
+          margin: 'auto'
         }}
       >
         <div
-          className="grid grid-rows-3 sm:grid-rows-1 grid-flow-col
-          justify-center mb-10 gap-x-10 gap-y-3"
+          className='grid grid-rows-3 sm:grid-rows-1 grid-flow-col
+          justify-center mb-10 gap-x-10 gap-y-3'
         >
-          <div className="m-auto text-center sm:m-0 sm:text-left">
-            <label className="mx-2 opacity-50">SEASON</label>
+          <div className='m-auto text-center sm:m-0 sm:text-left'>
+            <label className='mx-2 opacity-50'>SEASON</label>
             <Select
-              className="w-44 "
-              placeholder="YEAR"
+              className='w-44 '
+              placeholder='YEAR'
               value={{
-                label: yearOptions.find((y) => y.value == year).label,
+                label: yearOptions.find((y) => y.value === year).label
               }}
               onChange={onYearChange}
               options={yearOptions}
@@ -136,13 +136,13 @@ export const Progress = () => {
             />
           </div>
 
-          <div className="m-auto text-center sm:m-0 sm:text-left">
-            <label className="mx-2 opacity-50">TOP</label>
+          <div className='m-auto text-center sm:m-0 sm:text-left'>
+            <label className='mx-2 opacity-50'>TOP</label>
             <Select
-              className="w-32"
-              placeholder="TOP"
+              className='w-32'
+              placeholder='TOP'
               value={{
-                label: topOptions.find((t) => t.value == top).label,
+                label: topOptions.find((t) => t.value === top).label
               }}
               onChange={onTopChange}
               options={topOptions}
@@ -152,14 +152,14 @@ export const Progress = () => {
             />
           </div>
 
-          <div className="m-auto text-center sm:m-0 sm:text-left">
-            <label className="mx-2 opacity-50">CHAMPIONSHIP</label>
+          <div className='m-auto text-center sm:m-0 sm:text-left'>
+            <label className='mx-2 opacity-50'>CHAMPIONSHIP</label>
             <Select
-              className="w-52"
-              placeholder="CHAMPIONSHIP"
+              className='w-52'
+              placeholder='CHAMPIONSHIP'
               value={{
-                label: championshipOptions.find((c) => c.value == championship)
-                  .label,
+                label: championshipOptions.find((c) => c.value === championship)
+                  .label
               }}
               onChange={onChampChange}
               options={championshipOptions}
@@ -170,12 +170,14 @@ export const Progress = () => {
           </div>
         </div>
 
-        <div className="tile mb-10">
-          {loading ? (
-            <h2>Loading...</h2>
-          ) : (
-            <Line options={chartOptions} data={data} />
-          )}
+        <div className='tile mb-10'>
+          {loading
+            ? (
+              <h2>Loading...</h2>
+              )
+            : (
+              <Line options={chartOptions} data={data} />
+              )}
         </div>
       </div>
     </MainView>

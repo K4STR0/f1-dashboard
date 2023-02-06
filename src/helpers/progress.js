@@ -3,29 +3,11 @@ import {
   getDrivers,
   getRaceResults,
   getRounds,
-  getSprintRaceResults,
+  getSprintRaceResults
 } from '../api'
 
-const drivers = {
-  labels: ['Bahrein', 'Saudi Arabia', 'Australia', 'China', 'Azerbaiyan'],
-  datasets: [
-    {
-      label: 'Fernando Alonso',
-      data: [10, 35, 55, 78, 103],
-      borderColor: 'rgb(3, 122, 104)',
-      backgroundColor: 'rgba(3, 122, 104, 0.5)',
-    },
-    {
-      label: 'Nikita Mazepin',
-      data: [10, 24, 28, 45, 56],
-      borderColor: 'rgb(200, 200, 200)',
-      backgroundColor: 'rgba(200, 200, 200, 0.5)',
-    },
-  ],
-}
-
 export const getProgress = async ({ top = 10, year = 'current' }) => {
-  let labels = []
+  const labels = []
   let driverDatasets = []
   let constructorDatasets = []
 
@@ -110,7 +92,7 @@ export const getProgress = async ({ top = 10, year = 'current' }) => {
       data: driverDatasets[key],
       // random colors for each driver
       borderColor: `rgb(${r}, ${g}, ${b})`,
-      backgroundColor: `rgba(${r}, ${g}, ${b}, 0.5)`,
+      backgroundColor: `rgba(${r}, ${g}, ${b}, 0.5)`
     }
   })
 
@@ -125,7 +107,7 @@ export const getProgress = async ({ top = 10, year = 'current' }) => {
       data: constructorDatasets[key],
       // random colors for each constructor
       borderColor: `rgb(${r}, ${g}, ${b})`,
-      backgroundColor: `rgba(${r}, ${g}, ${b}, 0.5)`,
+      backgroundColor: `rgba(${r}, ${g}, ${b}, 0.5)`
     }
   })
 
@@ -146,6 +128,6 @@ export const getProgress = async ({ top = 10, year = 'current' }) => {
   return {
     labels,
     driverDatasets,
-    constructorDatasets,
+    constructorDatasets
   }
 }

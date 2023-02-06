@@ -6,14 +6,14 @@ export const chartOptions = {
   scales: {
     x: {
       ticks: {
-        color: 'white',
-      },
+        color: 'white'
+      }
     },
     y: {
       ticks: {
-        color: 'white',
-      },
-    },
+        color: 'white'
+      }
+    }
   },
   plugins: {
     legend: {
@@ -22,9 +22,9 @@ export const chartOptions = {
       labels: {
         color: 'white',
         boxWidth: 10,
-        boxHeight: 10,
-      },
-    },
+        boxHeight: 10
+      }
+    }
   },
-  maintainAspectRatio: false,
+  maintainAspectRatio: false
 }

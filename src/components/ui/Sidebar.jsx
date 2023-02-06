@@ -10,7 +10,6 @@ export const Sidebar = ({ closeSidebar, open }) => {
       closeSidebar()
     }
   }
-
   useEffect(() => {
     document.addEventListener('click', handleClickOutside, true)
     return () => {
@@ -22,29 +21,26 @@ export const Sidebar = ({ closeSidebar, open }) => {
     <div ref={ref} className={`sidebar ${open && 'open'} z-10`}>
       <img
         onClick={closeSidebar}
-        src="/icons/close-icon.png"
-        className="w-4 h-4 cursor-pointer mt-3 "
+        src='/icons/close-icon.png'
+        className='w-4 h-4 cursor-pointer mt-3 '
       />
-      <hr className="border-white w-full" />
+      <hr className='border-white w-full' />
       <div
-        className="cursor-pointer "
+        className='cursor-pointer '
         onClick={() => navigate('/standings/drivers')}
       >
         STANDINGS
       </div>
       <div
-        className="cursor-pointer"
+        className='cursor-pointer'
         onClick={() => navigate('/progress/drivers')}
       >
         PROGRESS
       </div>
-      <div
-        className="cursor-pointer"
-        onClick={() => navigate('/records')}
-      >
+      <div className='cursor-pointer' onClick={() => navigate('/records')}>
         RECORDS
       </div>
-      <hr className="border-white w-full" />
+      <hr className='border-white w-full' />
     </div>
   )
 }

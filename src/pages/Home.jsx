@@ -4,7 +4,7 @@ import {
   getConstructorStandings,
   getDriverStandings,
   getLastChampionship,
-  getLastWin,
+  getLastWin
 } from '../api'
 import { GraphPanel, ListPanel, SimplePanel } from '../components/panels'
 import { LineGraphTile, ListTile, SimpleTile } from '../components/tiles'
@@ -19,7 +19,7 @@ export const Home = () => {
   const [progress, setProgress] = useState({
     labels: [],
     driverDatasets: [],
-    constructorDatasets: [],
+    constructorDatasets: []
   })
 
   const navigate = useNavigate()
@@ -44,65 +44,65 @@ export const Home = () => {
 
   return (
     <MainView>
-      <div className="grid grid-cols-1 w-11/12 md:w-2/3 gap-y-4 mx-auto my-4 mt-20">
+      <div className='grid grid-cols-1 w-11/12 md:w-2/3 gap-y-4 mx-auto my-4 mt-20'>
         <SimplePanel>
           <SimpleTile
-            title="LAST RACE WINNER"
-            subtitle="DRIVER"
+            title='LAST RACE WINNER'
+            subtitle='DRIVER'
             content={lastWin.driver}
-            color="silver"
+            color='silver'
           />
           <SimpleTile
-            title="LAST RACE WINNER"
-            subtitle="CONSTRUCTOR"
+            title='LAST RACE WINNER'
+            subtitle='CONSTRUCTOR'
             content={lastWin.constructor}
-            color="silver"
+            color='silver'
           />
           <SimpleTile
-            title="CHAMPIONSHIP WINNER"
-            subtitle="DRIVER"
+            title='CHAMPIONSHIP WINNER'
+            subtitle='DRIVER'
             content={lastChamp.driver}
-            color="gold"
+            color='gold'
           />
           <SimpleTile
-            title="CHAMPIONSHIP WINNER"
-            subtitle="CONSTRUCTOR"
+            title='CHAMPIONSHIP WINNER'
+            subtitle='CONSTRUCTOR'
             content={lastChamp.constructor}
-            color="gold"
+            color='gold'
           />
         </SimplePanel>
         <ListPanel>
           <ListTile
-            title="DRIVERS STANDINGS"
-            subtitle="2022"
+            title='DRIVERS STANDINGS'
+            subtitle='2022'
             labels={['DRIVER', 'POINTS']}
             content={driverStandings}
             onClick={() => navigate('/standings/drivers')}
-            rank={true}
+            rank
           />
           <ListTile
-            title="CONSTRUCTORS STANDINGS"
-            subtitle="2022"
+            title='CONSTRUCTORS STANDINGS'
+            subtitle='2022'
             labels={['CONSTRUCTOR', 'POINTS']}
             content={constructorStandings}
             onClick={() => navigate('/standings/constructors')}
-            rank={true}
+            rank
           />
         </ListPanel>
         <GraphPanel>
           <LineGraphTile
-            title="DRIVERS PROGRESSION"
+            title='DRIVERS PROGRESSION'
             data={{
               labels: progress.labels,
-              datasets: progress.driverDatasets,
+              datasets: progress.driverDatasets
             }}
             onClick={() => navigate('/progress/drivers')}
           />
           <LineGraphTile
-            title="CONSTRUCTORS PROGRESSION"
+            title='CONSTRUCTORS PROGRESSION'
             data={{
               labels: progress.labels,
-              datasets: progress.constructorDatasets,
+              datasets: progress.constructorDatasets
             }}
             onClick={() => navigate('/progress/constructors')}
           />

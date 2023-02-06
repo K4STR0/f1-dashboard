@@ -4,14 +4,14 @@ export const ListTile = ({
   labels,
   content,
   onClick,
-  rank,
+  rank
 }) => {
   return (
-    <div className="tile" onClick={onClick}>
-      <div className="text-sm font-semibold">{title}</div>
-      <div className="text-xs">{subtitle}</div>
+    <div className='tile' onClick={onClick}>
+      <div className='text-sm font-semibold'>{title}</div>
+      <div className='text-xs'>{subtitle}</div>
 
-      <div className={`m-3 w-9/12`}>
+      <div className='m-3 w-9/12'>
         {/* Labels */}
         <div
           className={`grid grid-cols-${labels.length} text-xs md:text-base my-2 text-center opacity-80`}

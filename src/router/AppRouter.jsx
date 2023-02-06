@@ -6,10 +6,10 @@ export const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="records" element={<Records />} />
-        <Route path="progress/:champ" element={<Progress />} />
-        <Route path="standings/:champ" element={<Standings />} />
-        <Route path="*" element={<Home />} />
+        <Route path='records' element={<Records />} />
+        <Route path='progress/:champ' element={<Progress />} />
+        <Route path='standings/:champ' element={<Standings />} />
+        <Route path='*' element={<Home />} />
       </Routes>
     </BrowserRouter>
   )

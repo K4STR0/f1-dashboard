@@ -7,7 +7,7 @@ export const getLastWin = async () => {
   const data = res.data.MRData.RaceTable.Races[0].Results[0]
   return {
     driver: data.Driver.givenName + ' ' + data.Driver.familyName,
-    constructor: data.Constructor.name,
+    constructor: data.Constructor.name
   }
 }
 
@@ -20,7 +20,7 @@ export const getLastChampionship = async () => {
     res2.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings[0]
   return {
     driver: data1.Driver.givenName + ' ' + data1.Driver.familyName,
-    constructor: data2.Constructor.name,
+    constructor: data2.Constructor.name
   }
 }
 
@@ -33,7 +33,7 @@ export const getConstructorStandings = async (year = 'current') => {
       item.Constructor.name,
       item.Constructor.nationality,
       item.wins,
-      item.points,
+      item.points
     ]
   })
 }
@@ -46,7 +46,7 @@ export const getDriverStandings = async (year = 'current') => {
       item.Driver.givenName + ' ' + item.Driver.familyName,
       item.Driver.nationality,
       item.wins,
-      item.points,
+      item.points
     ]
   })
 }

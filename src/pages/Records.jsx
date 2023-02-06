@@ -20,30 +20,30 @@ export const Records = () => {
 
   return (
     <MainView>
-      <div className="grid grid-cols-1 w-11/12 md:w-2/3 gap-y-4 mx-auto my-4 mt-20">
+      <div className='grid grid-cols-1 w-11/12 md:w-2/3 gap-y-4 mx-auto my-4 mt-20'>
         <SimpleTile
-          title={'BAHREIN FASTEST LAP'}
-          subtitle={'1:34.570'}
-          content={'Pedro Martínez de la Rosa'}
-          color={'gold'}
+          title='BAHREIN FASTEST LAP'
+          subtitle='1:34.570'
+          content='Pedro Martínez de la Rosa'
+          color='gold'
         />
         <SimplePanel>
           <SimpleTile
-            title={'LAST RACE FASTEST PITSTOP'}
+            title='LAST RACE FASTEST PITSTOP'
             subtitle={fastestPitstop.time + 's'}
             content={fastestPitstop.driver}
           />
           <SimpleTile
-            title={'LAST RACE FASTEST LAP'}
+            title='LAST RACE FASTEST LAP'
             subtitle={fastestLap.lapTime}
             content={fastestLap.driver}
           />
         </SimplePanel>
         <SimpleTile
-          title={'ANOTHER RECORD'}
-          subtitle={'-----'}
-          content={'-----'}
-          color={'silver'}
+          title='ANOTHER RECORD'
+          subtitle='-----'
+          content='-----'
+          color='silver'
         />
       </div>
     </MainView>

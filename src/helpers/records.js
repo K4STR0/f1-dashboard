@@ -10,6 +10,6 @@ export const getLastRaceFastestPitstop = async (year = 'current') => {
   )
   return {
     driver: fastest.driverId.toLocaleUpperCase(),
-    time: fastest.duration,
+    time: fastest.duration
   }
 }

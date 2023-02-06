@@ -6,7 +6,7 @@ import {
   LineElement,
   Title,
   Tooltip,
-  Legend,
+  Legend
 } from 'chart.js'
 import { Line } from 'react-chartjs-2'
 import { chartOptions } from '../../helpers'
@@ -23,9 +23,9 @@ ChartJS.register(
 
 export const LineGraphTile = ({ data, title, subtitle, onClick }) => {
   return (
-    <div className="tile" onClick={onClick}>
-      <div className="text-sm font-semibold">{title}</div>
-      <div className="text-xs">{subtitle}</div>
+    <div className='tile' onClick={onClick}>
+      <div className='text-sm font-semibold'>{title}</div>
+      <div className='text-xs'>{subtitle}</div>
       <div style={{ height: '400px', width: '100%' }}>
         <Line options={chartOptions} data={data} />
       </div>
