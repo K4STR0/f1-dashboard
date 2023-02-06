@@ -1,7 +1,6 @@
 import {
   getConstructors,
   getDrivers,
-  getFastestLaps,
   getRaceResults,
   getRounds,
   getSprintRaceResults,

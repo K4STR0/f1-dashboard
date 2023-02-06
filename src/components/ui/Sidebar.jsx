@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router'
 
 export const Sidebar = ({ closeSidebar, open }) => {
+  const navigate = useNavigate()
   const ref = useRef(null)
 
   const handleClickOutside = (event) => {
@@ -23,16 +25,26 @@ export const Sidebar = ({ closeSidebar, open }) => {
         src="/icons/close-icon.png"
         className="w-4 h-4 cursor-pointer mt-3 "
       />
-      <hr className='border-white w-full'/>
-      <div>MORE</div>
-      <div>FEATURES</div>
-      <div>COMING</div>
-      <div>SOON</div>
-      <hr className='border-white w-full'/>
-      <div>SE</div>
-      <div>VIENEN</div>
-      <div>COSITAS</div>
-      <hr className='border-white w-full'/>
+      <hr className="border-white w-full" />
+      <div
+        className="cursor-pointer "
+        onClick={() => navigate('/standings/drivers')}
+      >
+        STANDINGS
+      </div>
+      <div
+        className="cursor-pointer"
+        onClick={() => navigate('/progress/drivers')}
+      >
+        PROGRESS
+      </div>
+      <div
+        className="cursor-pointer"
+        onClick={() => navigate('/records')}
+      >
+        RECORDS
+      </div>
+      <hr className="border-white w-full" />
     </div>
   )
 }

@@ -75,16 +75,25 @@ export const getRaceResults = async (year, round) => {
   return data
 }
 
-export const getFastestLaps = async (year, round) => {
-  const res = await axios.get(
-    BASE_URL + year + '/' + round + '/fastest/1/results.json'
-  )
-  const data = res.data.MRData.RaceTable.Races[0].Results[0]
-  return data
-}
-
 export const getSprintRaceResults = async (year, round) => {
   const res = await axios.get(BASE_URL + year + '/' + round + '/sprint.json')
   const data = res.data.MRData.RaceTable.Races[0]
   return data
+}
+
+export const getPitStops = async (year, round) => {
+  const res = await axios.get(BASE_URL + year + '/' + round + '/pitstops.json')
+  return res.data.MRData.RaceTable.Races[0].PitStops
+}
+
+export const getFastestLap = async (year = 'current', round = 'last') => {
+  const res = await axios.get(
+    BASE_URL + year + '/' + round + '/fastest/1/results.json'
+  )
+
+  const driver = res.data.MRData.RaceTable.Races[0].Results[0].Driver.familyName
+  const lapTime =
+    res.data.MRData.RaceTable.Races[0].Results[0].FastestLap.Time.time
+
+  return { driver, lapTime }
 }

@@ -18,8 +18,11 @@ export const chartOptions = {
   plugins: {
     legend: {
       position: 'top',
+      align: 'center',
       labels: {
         color: 'white',
+        boxWidth: 10,
+        boxHeight: 10,
       },
     },
   },
