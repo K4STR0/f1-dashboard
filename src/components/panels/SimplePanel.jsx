@@ -1,3 +1,5 @@
+
+// Panel component for one or more simple tiles
 export const SimplePanel = ({ children }) => {
   const cols = children.length
   return (

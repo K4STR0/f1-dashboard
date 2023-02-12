@@ -1,25 +1,13 @@
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-} from 'chart.js'
 import { Line } from 'react-chartjs-2'
 import { chartOptions } from '../../helpers'
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-)
+/**
+ * Tile component wich draw a line graph given:
+ * @property {Object} data: Information to be represented -> {labels: [], datasets: []}
+ * @property {String} title: Name of the graph
+ * @property {String} subtitle: Extra info about the graph
+ * @property {function} onClick: Function to be executed when graph is clicked
+ **/
 
 export const LineGraphTile = ({ data, title, subtitle, onClick }) => {
   return (

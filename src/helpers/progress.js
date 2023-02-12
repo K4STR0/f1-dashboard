@@ -6,6 +6,20 @@ import {
   getSprintRaceResults
 } from '../api'
 
+/**
+ * Get the progress of the drivers and constructors on a specific season (year)
+ * filtered by a top (from best to worst).
+ * This progress is calculated accumulating the points of each team/constructor
+ * across the season and putting them into a list
+ * @param {number} top Return only the data of this top (takes the best)
+ * ex: top = 3 on drivers returns only the three drivers with more points
+ * @param {number} year Season (can be "current" for the actual year)
+ * @returns {Object} -> {labels, driverDatasets, constructorDatasets}
+ * labels contains the name of the races of the season
+ * driverDatasets contains the progress of the drivers across the season (array)
+ * constructorDatasets contains the progress of the constructors across the season (array)
+ */
+
 export const getProgress = async ({ top = 10, year = 'current' }) => {
   const labels = []
   let driverDatasets = []
@@ -15,6 +29,7 @@ export const getProgress = async ({ top = 10, year = 'current' }) => {
   const drivers = await getDrivers(year)
   const constructors = await getConstructors(year)
 
+  // Initialize driver and constructor dict
   drivers.forEach((driver) => {
     driverDatasets[driver.familyName] = []
   })
@@ -26,43 +41,46 @@ export const getProgress = async ({ top = 10, year = 'current' }) => {
   for (let i = 1; i <= rounds; i++) {
     const race = await getRaceResults(year, i)
     const sprint = await getSprintRaceResults(year, i)
-    //  Set labels with ciruciut name
+    // Add ciruciut name to labels
     labels.push(race.raceName.replace('Grand Prix', 'GP'))
 
-    //  Set data with points of each driver
+    // Set data with points of each driver
     drivers.forEach((driver) => {
-      //  Points of long races
+      // Points of long races
       const racePoints =
         race.Results.find((r) => r.Driver.familyName === driver.familyName)
           ?.points || 0
 
-      //  Points of sprint races
+      // Points of sprint races
       const sprintRacePoints =
         sprint?.SprintResults?.find(
           (r) => r.Driver.familyName === driver.familyName
         )?.points || 0
 
-      //  Add points of last race
+      // Accumuleted points on the previous race
       const lastPoints = i === 1 ? 0 : driverDatasets[driver.familyName][i - 2]
 
+      // Calculate accumulated points
       const totalPoints =
         parseInt(racePoints || 0) + parseInt(sprintRacePoints || 0) + lastPoints
 
+      // Put accumulated points in the dict
       driverDatasets[driver.familyName].push(totalPoints)
     })
 
-    //  Set data with points of each constructor
+    // Set data with points of each constructor
     constructors.forEach((constructor) => {
-      //  Points of long races
+      // Points of long races
       const raceDrivers = race.Results.filter(
         (r) => r.Constructor.name === constructor.name
       )
 
+      // TODO: Research if there is always 2 drivers max by constructor
       const racePoints =
         parseInt(raceDrivers[0]?.points || 0) +
         parseInt(raceDrivers[1]?.points || 0)
 
-      //  Points of sprint races
+      // Points of sprint races
       const sprintDrivers = sprint?.SprintResults?.filter(
         (r) => r.Constructor.name === constructor.name
       )
@@ -71,12 +89,14 @@ export const getProgress = async ({ top = 10, year = 'current' }) => {
         parseInt(sprintDrivers?.[0].points) +
         parseInt(sprintDrivers?.[1].points)
 
-      //  Add points of last race
+      // Accumuleted points on the previous race
       const lastPoints =
         i === 1 ? 0 : constructorDatasets[constructor.name][i - 2]
 
+      // Calculate accumulated points
       const totalPoints = racePoints + (sprintRacePoints || 0) + lastPoints
 
+      // Put accumulated points in the dict
       constructorDatasets[constructor.name].push(totalPoints)
     })
   }
@@ -111,6 +131,7 @@ export const getProgress = async ({ top = 10, year = 'current' }) => {
     }
   })
 
+  // Filter the data if there is a top selected
   if (top) {
     driverDatasets = driverDatasets
       .sort((a, b) => {

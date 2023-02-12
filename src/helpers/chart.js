@@ -1,3 +1,5 @@
+
+// Options of chartjs graphs
 export const chartOptions = {
   responsive: true,
   fontColor: 'white',

@@ -1,7 +1,13 @@
 import { useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router'
 
-export const Sidebar = ({ closeSidebar, open }) => {
+/**
+ * Left side navigation bar of the page (only visible on small screens)
+ * @property {function} closeSidebar function to close sidebar
+ * @property {bool} open true if sidebar is visible
+ */
+
+export const Sidebar = ({ closeSidebar, open = false }) => {
   const navigate = useNavigate()
   const ref = useRef(null)
 
@@ -25,10 +31,7 @@ export const Sidebar = ({ closeSidebar, open }) => {
         className='w-4 h-4 cursor-pointer mt-3 '
       />
       <hr className='border-white w-full' />
-      <div
-        className='cursor-pointer '
-        onClick={() => navigate('/')}
-      >
+      <div className='cursor-pointer ' onClick={() => navigate('/')}>
         HOME
       </div>
       <div
@@ -46,9 +49,7 @@ export const Sidebar = ({ closeSidebar, open }) => {
       <div className='cursor-pointer' onClick={() => navigate('/records')}>
         RECORDS
       </div>
-      <div className='cursor-pointer'>
-        OTHERS
-      </div>
+      <div className='cursor-pointer'>OTHERS</div>
       <hr className='border-white w-full' />
     </div>
   )

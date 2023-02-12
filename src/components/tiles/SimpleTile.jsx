@@ -1,3 +1,12 @@
+
+/**
+ * Tile component with a simple info:
+ * @property {String} title: Info about the data
+ * @property {String} subtitle: Extra info about the data
+ * @property {Object} content: Data value
+ * @property {String} color: Background and border color ["gold", "silver", "bronze", ...]
+ **/
+
 export const SimpleTile = ({ title, subtitle, content, color = '' }) => {
   return (
     <div className={`tile ${color}`}>

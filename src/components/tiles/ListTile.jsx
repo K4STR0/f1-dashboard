@@ -1,10 +1,22 @@
+
+/**
+ * Tile component wich shows a list of elements:
+ * @property {String} title: Name of the list
+ * @property {String} subtitle: Extra info about the list
+ * @property {List} labels: Name of the columns
+ * @property {Object} content: Data of the columns
+ * @property {function} onClick: Function to be executed when list is clicked
+ * @property {bool} rank: If setted to true the 3 first items of the list
+ * will be colorized with "gold", "silver" and "bronze"
+ **/
+
 export const ListTile = ({
   title,
   subtitle,
   labels,
   content,
   onClick,
-  rank
+  rank = false
 }) => {
   return (
     <div className='tile' onClick={onClick}>
