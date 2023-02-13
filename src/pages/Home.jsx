@@ -11,7 +11,10 @@ import { LineGraphTile, ListTile, SimpleTile } from '../components/tiles'
 import { getProgress } from '../helpers'
 import { MainView } from '../layout'
 
+// Component for the home page
 export const Home = () => {
+  // Todo: Refactor (Custom Hook?)
+
   const [lastWin, setLastWin] = useState({})
   const [lastChamp, setLastChamp] = useState({})
   const [driverStandings, setDriverStandings] = useState([])
@@ -21,8 +24,6 @@ export const Home = () => {
     driverDatasets: [],
     constructorDatasets: []
   })
-
-  const navigate = useNavigate()
 
   useLayoutEffect(() => {
     getLastWin().then((res) => {
@@ -41,6 +42,8 @@ export const Home = () => {
       setProgress(res)
     })
   }, [])
+
+  const navigate = useNavigate()
 
   return (
     <MainView>

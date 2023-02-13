@@ -1,6 +1,11 @@
 import { useState } from 'react'
 import { Navbar, Sidebar } from '../components/ui'
 
+/**
+ * Layout with Sidebar and Navbar
+ * @property {List of components} children
+ */
+
 export const MainView = ({ children }) => {
   const [sidebar, setSidebar] = useState(false)
 

@@ -5,9 +5,11 @@ import Select from 'react-select'
 import { chartOptions, getProgress } from '../helpers'
 import { MainView } from '../layout'
 
+// Component for the progress page
 export const Progress = () => {
   const { champ } = useParams()
-  const navigate = useNavigate()
+
+  // Todo: Refactor (Custom Hook?)
 
   const [year, setYear] = useState('current') //  1950, 2020, 'current'
   const [top, setTop] = useState(null) //  5, 10, 'all'
@@ -20,13 +22,15 @@ export const Progress = () => {
       setData({
         labels: res.labels,
         datasets:
-          championship === 'drivers'
-            ? res.driverDatasets
-            : res.constructorDatasets
+        championship === 'drivers'
+          ? res.driverDatasets
+          : res.constructorDatasets
       })
       setLoading(false)
     })
   }, [year, top, championship])
+
+  const navigate = useNavigate()
 
   const yearOptions = [
     { value: 'current', label: 'CURRENT' },
@@ -120,6 +124,7 @@ export const Progress = () => {
           className='grid grid-rows-3 sm:grid-rows-1 grid-flow-col
           justify-center mb-10 gap-x-10 gap-y-3'
         >
+          {/* Selector for year, top and championship */}
           <div className='m-auto text-center sm:m-0 sm:text-left'>
             <label className='mx-2 opacity-50'>SEASON</label>
             <Select
@@ -170,6 +175,7 @@ export const Progress = () => {
           </div>
         </div>
 
+        {/* Graph of progress */}
         <div className='tile mb-10'>
           {loading
             ? (

@@ -7,6 +7,8 @@ import { MainView } from '../layout'
 export const Standings = () => {
   const { champ } = useParams()
 
+  // Todo: Refactor (Custom Hook?)
+
   const [year, setYear] = useState('current') //  1950, 2020, 'current'
   const [championship, setChampionship] = useState(champ) //  'drivers', 'constructors'
   const [data, setData] = useState([])

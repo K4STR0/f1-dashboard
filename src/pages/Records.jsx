@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { getFastestLap } from '../api'
 import { SimplePanel } from '../components/panels'
 import { SimpleTile } from '../components/tiles'
-import { getLastRaceFastestPitstop } from '../helpers'
+import { getFastestPitstop } from '../helpers'
 import { MainView } from '../layout/MainView'
 
 export const Records = () => {
@@ -10,7 +10,7 @@ export const Records = () => {
   const [fastestLap, setFastestLap] = useState({ driver: '', lapTime: '' })
 
   useEffect(() => {
-    getLastRaceFastestPitstop().then((res) => {
+    getFastestPitstop().then((res) => {
       setFastestPitstop(res)
     })
     getFastestLap().then((res) => {
