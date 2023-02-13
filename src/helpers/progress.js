@@ -6,6 +6,19 @@ import {
   getSprintRaceResults
 } from '../api'
 
+export const constructorColors = {
+  Ferrari: '#ff2800',
+  'Red Bull': '#400edf',
+  Mercedes: '#0edfbd',
+  McLaren: '#fc9519',
+  'Aston Martin': '#1d9e65',
+  'Alpine F1 Team': '#6abad5',
+  AlphaTauri: '#69829c',
+  'Alfa Romeo': '#a91f1f',
+  Williams: '#067af8',
+  'Haas F1 Team': '#ffffff'
+}
+
 /**
  * Get the progress of the drivers and constructors on a specific season (year)
  * filtered by a top (from best to worst).
@@ -125,9 +138,9 @@ export const getProgress = async ({ top = 10, year = 'current' }) => {
     return {
       label: key,
       data: constructorDatasets[key],
-      // random colors for each constructor
-      borderColor: `rgb(${r}, ${g}, ${b})`,
-      backgroundColor: `rgba(${r}, ${g}, ${b}, 0.5)`
+      // color of each constructor or random if its not defined
+      borderColor: constructorColors[key] || `rgb(${r}, ${g}, ${b})`,
+      backgroundColor: constructorColors[key] || `rgba(${r}, ${g}, ${b}, 0.5)`
     }
   })
 

@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
-import { Line } from 'react-chartjs-2'
+
 import { useNavigate, useParams } from 'react-router'
 import Select from 'react-select'
-import { chartOptions, getProgress } from '../helpers'
+import { Line } from 'react-chartjs-2'
+
+import { championshipOptions, chartOptions, getProgress, selectStyles, topOptions, yearOptions } from '../helpers'
 import { MainView } from '../layout'
 
 // Component for the progress page
@@ -32,29 +34,11 @@ export const Progress = () => {
 
   const navigate = useNavigate()
 
-  const yearOptions = [
-    { value: 'current', label: 'CURRENT' },
-    ...Array.from(
-      { length: new Date().getFullYear() - 1950 },
-      (x, i) => i + 1950
-    )
-      .reverse()
-      .map((year) => ({ value: year, label: year }))
-  ]
-
   const onYearChange = (event) => {
     if (event.value === year) return
     setLoading(true)
     setYear(event.value)
   }
-
-  const topOptions = [
-    { value: null, label: 'ALL' },
-    ...Array.from({ length: 20 }, (x, i) => i + 1).map((top) => ({
-      value: top,
-      label: 'TOP ' + top
-    }))
-  ]
 
   const onTopChange = (event) => {
     if (event.value === top) return
@@ -62,52 +46,11 @@ export const Progress = () => {
     setTop(event.value)
   }
 
-  const championshipOptions = [
-    {
-      label: 'DRIVERS',
-      value: 'drivers'
-    },
-    {
-      label: 'CONSTRUCTORS',
-      value: 'constructors'
-    }
-  ]
-
   const onChampChange = (event) => {
     if (event.value === championship) return
     setLoading(true)
     setChampionship(event.value)
     navigate(`/progress/${event.value}`)
-  }
-
-  const selectStyles = {
-    control: (provided) => ({
-      ...provided,
-      backgroundColor: '#1e1e1e',
-      borderColor: 'rgba(255, 0, 0, 0.3)',
-      textAlign: 'center',
-      boxShadow: 'red',
-      '&:hover': {
-        borderColor: 'rgba(255, 0, 0, 0.6)'
-      }
-    }),
-    menu: (provided) => ({
-      ...provided,
-      backgroundColor: '#1e1e1e'
-    }),
-    option: (provided, state) => ({
-      ...provided,
-      fontWeight: state.isSelected ? 'bold' : 'normal',
-      color: 'white',
-      backgroundColor: '#1e1e1e',
-      textAlign: 'center',
-      fontSize: state.selectProps.myFontSize
-    }),
-    singleValue: (provided, state) => ({
-      ...provided,
-      color: state.data.color,
-      fontSize: state.selectProps.myFontSize
-    })
   }
 
   return (
@@ -176,7 +119,7 @@ export const Progress = () => {
         </div>
 
         {/* Graph of progress */}
-        <div className='tile mb-10'>
+        <div className='tile mb-10 min-h-[500px]'>
           {loading
             ? (
               <h2>Loading...</h2>
