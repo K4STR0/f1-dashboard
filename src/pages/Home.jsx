@@ -77,7 +77,7 @@ export const Home = () => {
         <ListPanel>
           <ListTile
             title='DRIVERS STANDINGS'
-            subtitle='2022'
+            subtitle='2023'
             labels={['DRIVER', 'POINTS']}
             content={driverStandings}
             onClick={() => navigate('/standings/drivers')}
@@ -85,7 +85,7 @@ export const Home = () => {
           />
           <ListTile
             title='CONSTRUCTORS STANDINGS'
-            subtitle='2022'
+            subtitle='2023'
             labels={['CONSTRUCTOR', 'POINTS']}
             content={constructorStandings}
             onClick={() => navigate('/standings/constructors')}

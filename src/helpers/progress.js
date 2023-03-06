@@ -34,7 +34,7 @@ export const constructorColors = {
  */
 
 export const getProgress = async ({ top = 10, year = 'current' }) => {
-  const labels = []
+  const labels = ['Season start']
   let driverDatasets = []
   let constructorDatasets = []
 
@@ -55,6 +55,9 @@ export const getProgress = async ({ top = 10, year = 'current' }) => {
     const race = await getRaceResults(year, i)
     const sprint = await getSprintRaceResults(year, i)
     // Add ciruciut name to labels
+    if (!race) {
+      continue
+    }
     labels.push(race.raceName.replace('Grand Prix', 'GP'))
 
     // Set data with points of each driver
@@ -122,7 +125,7 @@ export const getProgress = async ({ top = 10, year = 'current' }) => {
 
     return {
       label: key,
-      data: driverDatasets[key],
+      data: [0, ...driverDatasets[key]],
       // random colors for each driver
       borderColor: `rgb(${r}, ${g}, ${b})`,
       backgroundColor: `rgba(${r}, ${g}, ${b}, 0.5)`
@@ -137,7 +140,7 @@ export const getProgress = async ({ top = 10, year = 'current' }) => {
 
     return {
       label: key,
-      data: constructorDatasets[key],
+      data: [0, constructorDatasets[key]],
       // color of each constructor or random if its not defined
       borderColor: constructorColors[key] || `rgb(${r}, ${g}, ${b})`,
       backgroundColor: constructorColors[key] || `rgba(${r}, ${g}, ${b}, 0.5)`

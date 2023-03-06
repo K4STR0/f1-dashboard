@@ -106,5 +106,5 @@ export const getFastestLap = async (year = 'current', round = 'last') => {
   const lapTime =
     res.data.MRData.RaceTable.Races[0].Results[0].FastestLap.Time.time
 
-  return { driver, lapTime }
+  return { driver: driver.toLocaleUpperCase(), lapTime }
 }
