@@ -140,7 +140,7 @@ export const getProgress = async ({ top = 10, year = 'current' }) => {
 
     return {
       label: key,
-      data: [0, constructorDatasets[key]],
+      data: [0, ...constructorDatasets[key]],
       // color of each constructor or random if its not defined
       borderColor: constructorColors[key] || `rgb(${r}, ${g}, ${b})`,
       backgroundColor: constructorColors[key] || `rgba(${r}, ${g}, ${b}, 0.5)`
